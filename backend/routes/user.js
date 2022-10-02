@@ -67,6 +67,7 @@ const transport = nodemailer.createTransport({
 });
 router.post("/forgotPassword", (req, res) => {
   const user = req.body;
+  console.log(req.body);
   query = "select email,password from user where email=?";
   connection.query(query, [user.email], (err, results) => {
     if (!err) {
@@ -142,7 +143,7 @@ router.post("/changePassword", auth.authenticateToken, (req, res) => {
       if (results.length <= 0) {
         return res.status(400).json({ message: "Incorrect Old Password" });
       } else if (results[0].password === user.oldPassword) {
-        query = "udpate user set password=? where email=?";
+        query = "update user set password=? where email=?";
         connection.query(query, [user.newPassword, email], (err, results) => {
           if (!err) {
             return res
