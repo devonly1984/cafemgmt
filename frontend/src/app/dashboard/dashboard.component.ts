@@ -1,8 +1,9 @@
-import { Component, AfterViewInit } from '@angular/core';
-import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { AfterViewInit, Component } from '@angular/core';
+
 import { DashboardService } from '../services/dashboard.service';
-import { SnackbarService } from '../services/snackbar.service';
 import { GlobalConstants } from '../shared/global-constants';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { SnackbarService } from '../services/snackbar.service';
 
 @Component({
   selector: 'app-dashboard',

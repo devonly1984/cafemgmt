@@ -1,13 +1,12 @@
+import { RouteGuardService } from '../route-guard.service';
 import { TestBed } from '@angular/core/testing';
 
-import { DashboardService } from './dashboard.service';
-
-describe('DashboardService', () => {
-  let service: DashboardService;
+describe('RouteGuardService', () => {
+  let service: RouteGuardService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(DashboardService);
+    service = TestBed.inject(RouteGuardService);
   });
 
   it('should be created', () => {
