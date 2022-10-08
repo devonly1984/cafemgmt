@@ -13,6 +13,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ViewBillProductsComponent } from './dialog/view-bill-products/view-bill-products.component';
 import { CategoryComponent } from './dialog/category/category.component';
+import { ManageProductComponent } from './manage-product/manage-product.component';
 
 @NgModule({
   imports: [
@@ -32,6 +33,7 @@ import { CategoryComponent } from './dialog/category/category.component';
     ChangePasswordComponent,
     ManageCategoryComponent,
     CategoryComponent,
+    ManageProductComponent,
   ],
 })
 export class MaterialComponentsModule {}
