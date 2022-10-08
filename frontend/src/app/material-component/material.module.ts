@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
 import { ConfirmationComponent } from './dialog/confirmation/confirmation.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpClientModule } from '@angular/common/http';
-import { ManageCategoryComponent } from './manage-category/manage-category.component
+import { ManageCategoryComponent } from './manage-category/manage-category.component';
 import { MaterialModule } from '../shared/material-module';
 import { MaterialRoutes } from './material.routing';
 import { NgModule } from '@angular/core';
