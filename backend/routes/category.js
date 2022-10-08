@@ -45,7 +45,7 @@ router.patch(
           return res.status(404).json({ message: "Category Id was not found" });
         }
         return res
-          .statsu(200)
+          .status(200)
           .json({ message: "Category updated successfully" });
       } else {
         return res.status(500).json(err);

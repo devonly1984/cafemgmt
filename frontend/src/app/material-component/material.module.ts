@@ -12,6 +12,7 @@ import { MaterialRoutes } from './material.routing';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ViewBillProductsComponent } from './dialog/view-bill-products/view-bill-products.component';
+import { CategoryComponent } from './dialog/category/category.component';
 
 @NgModule({
   imports: [
@@ -30,6 +31,7 @@ import { ViewBillProductsComponent } from './dialog/view-bill-products/view-bill
     ConfirmationComponent,
     ChangePasswordComponent,
     ManageCategoryComponent,
+    CategoryComponent,
   ],
 })
 export class MaterialComponentsModule {}
