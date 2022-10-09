@@ -15,6 +15,7 @@ import { ViewBillProductsComponent } from './dialog/view-bill-products/view-bill
 import { CategoryComponent } from './dialog/category/category.component';
 import { ManageProductComponent } from './manage-product/manage-product.component';
 import { ProductComponent } from './dialog/product/product.component';
+import { ManageOrderComponent } from './manage-order/manage-order.component';
 
 @NgModule({
   imports: [
@@ -36,6 +37,7 @@ import { ProductComponent } from './dialog/product/product.component';
     CategoryComponent,
     ManageProductComponent,
     ProductComponent,
+    ManageOrderComponent,
   ],
 })
 export class MaterialComponentsModule {}

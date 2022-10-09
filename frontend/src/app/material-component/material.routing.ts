@@ -3,6 +3,7 @@ import { ManageCategoryComponent } from './manage-category/manage-category.compo
 import { RouteGuardService } from '../services/route-guard.service';
 import { Routes } from '@angular/router';
 import { ManageProductComponent } from './manage-product/manage-product.component';
+import { ManageOrderComponent } from './manage-order/manage-order.component';
 
 export const MaterialRoutes: Routes = [
   {
@@ -19,6 +20,14 @@ export const MaterialRoutes: Routes = [
     canActivate: [RouteGuardService],
     data: {
       expectedRole: ['admin'],
+    },
+  },
+  {
+    path: 'order',
+    component: ManageOrderComponent,
+    canActivate: [RouteGuardService],
+    data: {
+      expectedRole: ['admin', 'user'],
     },
   },
 ];

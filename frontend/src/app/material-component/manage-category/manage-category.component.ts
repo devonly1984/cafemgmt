@@ -61,11 +61,9 @@ export class ManageCategoryComponent implements OnInit {
     this.router.events.subscribe(() => {
       dialogRef.close();
     });
-    const sub = dialogRef.componentInstance.onAddCategory.subscribe(
-      (response) => {
-        this.tableData();
-      }
-    );
+    const sub = dialogRef.componentInstance.onAddCategory.subscribe(() => {
+      this.tableData();
+    });
   }
   handleEditAction(value: any) {
     const dialogConfig = new MatDialogConfig();
@@ -78,10 +76,8 @@ export class ManageCategoryComponent implements OnInit {
     this.router.events.subscribe(() => {
       dialogRef.close();
     });
-    const sub = dialogRef.componentInstance.onEditCategory.subscribe(
-      (response) => {
-        this.tableData();
-      }
-    );
+    const sub = dialogRef.componentInstance.onEditCategory.subscribe(() => {
+      this.tableData();
+    });
   }
 }

@@ -9,4 +9,6 @@ export class GlobalConstants {
   public static error: string = 'error';
   public static unauthorized: string =
     'You are not authorized person to access this page';
+  public static productExistError: string = 'Product already exist';
+  public static productAdded: string = 'Product Added Successfully';
 }
