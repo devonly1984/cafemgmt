@@ -14,6 +14,7 @@ import { RouterModule } from '@angular/router';
 import { ViewBillProductsComponent } from './dialog/view-bill-products/view-bill-products.component';
 import { CategoryComponent } from './dialog/category/category.component';
 import { ManageProductComponent } from './manage-product/manage-product.component';
+import { ProductComponent } from './dialog/product/product.component';
 
 @NgModule({
   imports: [
@@ -34,6 +35,7 @@ import { ManageProductComponent } from './manage-product/manage-product.componen
     ManageCategoryComponent,
     CategoryComponent,
     ManageProductComponent,
+    ProductComponent,
   ],
 })
 export class MaterialComponentsModule {}

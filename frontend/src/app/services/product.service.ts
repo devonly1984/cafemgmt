@@ -14,7 +14,7 @@ export class ProductService {
     });
   }
   updateProduct(data: any) {
-    return this.httpClient.patch(this.url + '/product/update/', data, {
+    return this.httpClient.patch(this.url + '/product/update', data, {
       headers: new HttpHeaders().set('Content-Type', 'application/json'),
     });
   }
@@ -27,7 +27,7 @@ export class ProductService {
     });
   }
   deleteProduct(id: any) {
-    return this.httpClient.post(this.url + '/product/delete/' + id, {
+    return this.httpClient.delete(this.url + '/product/delete/' + id, {
       headers: new HttpHeaders().set('Content-Type', 'application/json'),
     });
   }

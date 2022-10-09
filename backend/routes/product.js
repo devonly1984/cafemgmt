@@ -4,8 +4,9 @@ const connection = require("../conn");
 const auth = require("../services/authentication");
 const checkRole = require("../services/checkRole");
 
-router.post("/add", auth.authenticateToken, checkRole.checkRole, (res, req) => {
+router.post("/add", auth.authenticateToken, checkRole.checkRole, (req, res) => {
   let product = req.body;
+
   const query =
     "insert into product (name,categoryId,description,price,status) values(?,?,?,?,'true')";
   connection.query(
@@ -20,10 +21,10 @@ router.post("/add", auth.authenticateToken, checkRole.checkRole, (res, req) => {
     }
   );
 });
-router.get("/get", auth.authenticateToken, (res, req, next) => {
+router.get("/get", auth.authenticateToken, (req, res, next) => {
   const query =
-    "select p.id,p.name,p.description,p.price,p.status,c.id as categoryId,c.name as category.name from product as p INNER JOIN category as c where p.categoryId = c.id ";
-  const allProducts = "select * from product";
+    "select p.id,p.name,p.description,p.price,p.status,c.id as categoryId,c.name as categoryName from product as p INNER JOIN category as c where p.categoryId = c.id ";
+
   connection.query(query, (err, results) => {
     if (!err) {
       return res.status(200).json(results);
@@ -74,7 +75,7 @@ router.patch(
       ],
       (err, results) => {
         if (!err) {
-          if (results[0].affectedRows === 0) {
+          if (results.affectedRows == 0) {
             return res
               .status(404)
               .json({ message: "Product with id was not found" });
@@ -115,7 +116,7 @@ router.patch(
   (req, res) => {
     const user = req.body;
     const query = "update product set status=? where id=?";
-    connection.query(query, [user.status], (err, results) => {
+    connection.query(query, [user.status, user.id], (err, results) => {
       if (!err) {
         if (results.affectedRows == 0) {
           return res.status(404).json({ message: "Product id was not found" });

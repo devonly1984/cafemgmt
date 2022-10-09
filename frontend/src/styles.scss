@@ -42,3 +42,34 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     margin-top: 70px !important;
     padding: 20px !important;
 }
+mat-toolbar {
+  margin: -24px;
+  width: auto;
+  margin-bottom: 10px;
+}
+
+.title-center {
+  flex: 1 1 auto;
+  text-align: center;
+
+}
+
+mat-form-field {
+  padding: 5px;
+
+}
+mat-hint {
+  color: red;
+}
+.float-right {
+  float: right;
+}
+
+mat-card {
+  padding: 20px;
+
+}
+
+table {
+  width: 100%;
+}
