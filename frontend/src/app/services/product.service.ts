@@ -1,4 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
@@ -32,7 +33,7 @@ export class ProductService {
     });
   }
   getProductsbyCategory(id: any) {
-    return this.httpClient.get(this.url + '/product/getCategoryById/' + id);
+    return this.httpClient.get(this.url + '/product/getByCategory/' + id);
   }
   getById(id: any) {
     return this.httpClient.get(this.url + '/product/getById/' + id);

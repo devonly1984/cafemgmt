@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatTableDataSource } from '@angular/material/table';
-import { NgxUiLoaderService } from 'ngx-ui-loader';
+
 import { BillService } from 'src/app/services/bill.service';
 import { CategoryService } from 'src/app/services/category.service';
+import { GlobalConstants } from 'src/app/shared/global-constants';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { ProductService } from 'src/app/services/product.service';
 import { SnackbarService } from 'src/app/services/snackbar.service';
-import { GlobalConstants } from 'src/app/shared/global-constants';
 import { saveAs } from 'file-saver';
 
 @Component({
@@ -50,8 +50,7 @@ export class ManageOrderComponent implements OnInit {
       ],
       email: [
         null,
-        Validators.required,
-        Validators.pattern(GlobalConstants.emailRegex),
+        [Validators.required, Validators.pattern(GlobalConstants.emailRegex)],
       ],
       contactNumber: [
         null,
@@ -96,7 +95,7 @@ export class ManageOrderComponent implements OnInit {
         this.manageOrderForm.controls['quantity'].setValue('');
         this.manageOrderForm.controls['total'].setValue(0);
       },
-      (error) => {
+      (error: any) => {
         this.ngxService.stop();
         if (error.error?.message) {
           this.responseMsg = error.error?.message;
@@ -115,7 +114,7 @@ export class ManageOrderComponent implements OnInit {
         this.manageOrderForm.controls['quantity'].setValue('1');
         this.manageOrderForm.controls['total'].setValue(this.price * 1);
       },
-      (error) => {
+      (error: any) => {
         this.ngxService.stop();
         if (error.error?.message) {
           this.responseMsg = error.error?.message;
@@ -169,8 +168,9 @@ export class ManageOrderComponent implements OnInit {
   }
   addProduct() {
     const formData = this.manageOrderForm.value;
+
     const productName = this.dataSource.find(
-      (e: { id: number }) => formData.product.id
+      (e: { id: number }) => e.id == formData.product.id
     );
     if (productName === undefined) {
       this.totalAmount = this.totalAmount + formData.total;
@@ -193,7 +193,8 @@ export class ManageOrderComponent implements OnInit {
   }
   handleDeleteAction(value: any, element: any) {
     this.totalAmount = this.totalAmount - element.total;
-    this.dataSource.slice(value, 1);
+    this.dataSource.splice(value, 1);
+
     this.dataSource = [...this.dataSource];
   }
   submitAction() {
@@ -215,7 +216,7 @@ export class ManageOrderComponent implements OnInit {
         this.dataSource = [];
         this.totalAmount = 0;
       },
-      (error) => {
+      (error: any) => {
         this.ngxService.stop();
         if (error.error?.message) {
           this.responseMsg = error.error?.message;
@@ -235,7 +236,7 @@ export class ManageOrderComponent implements OnInit {
         saveAs(response, fileName + '.pdf');
         this.ngxService.stop();
       },
-      (error) => {
+      (error: any) => {
         this.ngxService.stop();
         if (error.error?.message) {
           this.responseMsg = error.error?.message;

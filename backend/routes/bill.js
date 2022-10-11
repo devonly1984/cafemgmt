@@ -12,7 +12,7 @@ router.post("/generateReport", auth.authenticateToken, (req, res) => {
 	const orderDetails = req.body;
 	const productDetailsReport = JSON.parse(orderDetails.productDetails);
 	const query =
-		"insert into bill (name,uuid,email,contactNumber,paymentMethod,total,productDetails,createdBy) values=(?,?,?,?,?,?,?,?)";
+		"insert into bill (name,uuid,email,contactNumber,paymentMethod,total,productDetails,createdBy) values(?,?,?,?,?,?,?,?)";
 	connection.query(
 		query,
 		[
@@ -41,6 +41,7 @@ router.post("/generateReport", auth.authenticateToken, (req, res) => {
 						if (err) {
 							return res.status(500).json(err);
 						} else {
+							console.log(results);
 							pdf
 								.create(results)
 								.toFile(
@@ -63,9 +64,10 @@ router.post("/generateReport", auth.authenticateToken, (req, res) => {
 		}
 	);
 });
-router.post("/getPdf", auth.authenticateToken, (res, req) => {
+router.post("/getPdf", auth.authenticateToken, (req, res) => {
 	const orderDetails = req.body;
-	const pdfPath = "/generated_pdf/" + orderDetails.uuid + ".pdf";
+	const pdfPath = "../generated_pdf/" + orderDetails.uuid + ".pdf";
+
 	if (fs.existsSync(pdfPath)) {
 		res.contentType("application/pdf");
 		fs.createReadStream(pdfPath).pipe(res);
