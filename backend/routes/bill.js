@@ -41,14 +41,12 @@ router.post("/generateReport", auth.authenticateToken, (req, res) => {
             if (err) {
               return res.status(500).json(err);
             } else {
-              console.log(results);
               pdf
                 .create(results)
                 .toFile(
                   "./generated_pdf/" + generatedUuid + ".pdf",
                   (err, data) => {
                     if (err) {
-                      console.log(err);
                       return res.status(500).json(err);
                     } else {
                       return res.status(200).json({ uuid: generatedUuid });
@@ -93,7 +91,6 @@ router.post("/getPdf", auth.authenticateToken, (req, res) => {
               "./generated_pdf/" + orderDetails.uuid + ".pdf",
               (err, data) => {
                 if (err) {
-                  console.log(err);
                   return res.status(500).json(err);
                 } else {
                   res.contentType("application/pdf");

@@ -32,6 +32,12 @@ const MENU_ITEMS = [
     icon: 'list_alt',
     role: '',
   },
+  {
+    state: 'bill',
+    name: 'View Bill',
+    icon: 'import_contacts',
+    role: '',
+  },
 ];
 @Injectable()
 export class MenuItems {
