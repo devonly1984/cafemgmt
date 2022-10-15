@@ -20,6 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": ["file-saver"],
             "outputPath": "dist/Frontend",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -129,6 +130,6 @@
         }
       }
     }
-  },
-  "defaultProject": "Frontend"
+  }
+  
 }
