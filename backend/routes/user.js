@@ -103,7 +103,7 @@ router.post("/forgotPassword", (req, res) => {
 });
 router.get("/get", auth.authenticateToken, checkRole.checkRole, (req, res) => {
   const query =
-    "select id,name,email,contactNumbe,status from user where role='user'";
+    "select id,name,email,contactNumber,status from user where role='user'";
   connection.query(query, (err, results) => {
     if (!err) {
       return res.status(200).json(results);
